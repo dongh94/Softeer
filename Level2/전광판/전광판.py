@@ -2,7 +2,7 @@ import sys; sys.stdin=open("전광판.txt")
 #최소 변경 횟수 구하기.
 #아이디어 : 다섯자리라는 점/ 7 * 5 = 35/
 #1. 자릿 수 파악. => 자릿수가 다른만큼 + 그숫자 그대로
-#2. 숫자 파악 => 1 - 9 : 1: 2, 2: 5, 3: 5, 4 : 4
+#2. 숫자 비교 => 1 - 9 : 1: 2, 2: 5, 3: 5, 4 : 4 >>> 이부분이 스트링으로
 #3. 칸 파악 => 칸마다 확인해서 0, 1 로 켜져있는지 딕셔너리 리스트로 정리?
 
 number_dict = {'0': [1,1,1,0,1,1,1], '1': [0,0,1,0,0,1,0], '2':[1,0,1,1,1,0,1],
@@ -21,5 +21,8 @@ for t in range(T):
 
     for i in range(5):
         for j in range(7):
-            answer += (number_dict[new_A[i]][j] != number_dict[new_B[i]][j])
+            if number_dict[new_A[i]][j] != number_dict[new_B[i]][j]:
+                answer += 1
+
+            # answer += (number_dict[new_A[i]][j] != number_dict[new_B[i]][j])
     print(answer)
