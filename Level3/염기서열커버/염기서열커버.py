@@ -8,8 +8,8 @@ for _ in range(n):
 
 superDNA = [None for _ in range(2**n)]
 superDNA[0] = ["."]*m
+# print(superDNA)
 
-print(superDNA)
 def merge(dna1, dna2):
     if dna1 == [] or dna2 == []:
         return []
@@ -37,7 +37,7 @@ def genSuperDNA(index):
 for i in range(1, 2**n):
     genSuperDNA(i)
 
-print(superDNA)
+# print(superDNA)
 
 def genAnswer(index):
     if answer[index] < n+1:
@@ -68,6 +68,10 @@ def genAnswer(index):
                 break
         temp = genAnswer(number1) + genAnswer(number2)
 
+        if answer[index] > temp:
+            answer[index] = temp
+    return answer[index]
+
 answer = [n+1] * (2**n)
 answer[0] = 0
 for i in range(1, 2**n):
@@ -75,3 +79,4 @@ for i in range(1, 2**n):
         answer[i] = 1
     else:
         genAnswer(i)
+print(answer[2**n - 1])
